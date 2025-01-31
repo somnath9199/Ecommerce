@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const Product = require('../model/Product')// Ensure the correct path
+const Product = require('../model/Product')
 
 async function Addproduct(req, res) {
     try {
@@ -10,7 +10,6 @@ async function Addproduct(req, res) {
             return res.status(400).json({ success: false, message: "Missing required fields" });
         }
 
-        // Create new product
         const newProduct = new Product({
             name,
             brand,
@@ -32,4 +31,37 @@ async function Addproduct(req, res) {
     }
 }
 
-module.exports = { Addproduct };
+async function updateProduct(req, res) {
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+
+        const updatedProduct = await Product.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
+
+        if (!updatedProduct) {
+            return res.status(404).json({ success: false, message: "Product not found" });
+        }
+
+        return res.status(200).json({ success: true, message: "Product updated successfully", product: updatedProduct });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Internal server error", error: error.message });
+    }
+}
+
+async function deleteProduct(req, res) {
+    try {
+        const { id } = req.params;
+
+        const deletedProduct = await Product.findByIdAndDelete(id);
+
+        if (!deletedProduct) {
+            return res.status(404).json({ success: false, message: "Product not found" });
+        }
+
+        return res.status(200).json({ success: true, message: "Product deleted successfully" });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: "Internal server error", error: error.message });
+    }
+}
+
+module.exports = { Addproduct,deleteProduct,updateProduct };

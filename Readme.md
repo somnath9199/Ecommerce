@@ -1,6 +1,8 @@
 Project Requirement: E-Commerce Website for Offline Clothing Business
+
 Overview:
 Our offline clothing business represents over 50 brands and now aims to expand its reach through an e-commerce website. The platform must deliver a seamless user experience for customers while effectively managing inventory integration between our physical store and the online platform.
+
 Key Requirements:
 • E-Commerce Features:
 • User-friendly website with mobile responsiveness.
@@ -16,6 +18,7 @@ Key Requirements:
 • API or middleware for seamless integration of offline POS with the website.
 •  real-time inventory updates across all online and offline channels.
 • Synchronization for offers, discounts, and pricing changes.
+
 
 • Logistics and Fulfillment:
 • Integration with logistics partners for shipping and tracking.
