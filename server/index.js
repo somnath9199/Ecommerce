@@ -5,7 +5,6 @@ const dbconnection = require('./config/dbconnection')
 const Route = require('./Router/Routes')
 const app= express();
 
-
 //middlewares
 app.use(express.json());
 app.use('/v2/api',Route);

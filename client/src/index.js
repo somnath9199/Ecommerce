@@ -7,6 +7,7 @@ import TestingPage from './pages/Testingpage';
 import Home from './pages/Home'
 import {AuthProvider} from './auth/Authcontext'
 import ProtectedRoute from './auth/ProtectedRoute';
+import Adminpage from './pages/Adminpage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,9 +17,8 @@ root.render(
     <Routes>
        <Route path='/Login' element={<Login/>}/>
        <Route path='/' element={<TestingPage/>}/>
-
-       {/* <ProtectedRoute path="/Home" component={Home} /> */}
       <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+      <Route path='/Admin' element={<Adminpage/>}/>
     </Routes>
     </BrowserRouter>
     </AuthProvider>

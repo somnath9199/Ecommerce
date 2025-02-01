@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Filter, ChevronDown } from 'lucide-react';
 
-const Testingpage = () => {
+const Sidebar = () => {
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [brands, setBrands] = useState({
     brandA: false,
@@ -88,4 +88,4 @@ const Testingpage = () => {
   );
 };
 
-export default Testingpage;
+export default Sidebar;
