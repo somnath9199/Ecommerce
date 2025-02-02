@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, ChevronDown } from 'lucide-react';
+import { Search, ChevronDown, Filter } from 'lucide-react';
 
 const Sidebar = () => {
   const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -7,6 +7,10 @@ const Sidebar = () => {
     brandA: false,
     brandB: false,
     brandC: false,
+  });
+  const [filters, setFilters] = useState({
+    available: false,
+    discount: false,
   });
 
   const handlePriceChange = (event) => {
@@ -21,9 +25,16 @@ const Sidebar = () => {
     }));
   };
 
+  const handleFilterChange = (filter) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filter]: !prevFilters[filter],
+    }));
+  };
+
   return (
-    <div className="w-64 p-6 bg-gray-800 text-white">
-      <h2 className="text-xl font-semibold mb-4">Shop by Category</h2>
+    <div className="w-64 p-6 bg-gray-800 text-white rounded-lg shadow-lg">
+      <h2 className="text-xl font-semibold mb-6">Shop by Category</h2>
       <ul className="space-y-3">
         <li><a href="#" className="hover:text-gray-400">Electronics</a></li>
         <li><a href="#" className="hover:text-gray-400">Fashion</a></li>
@@ -34,6 +45,23 @@ const Sidebar = () => {
 
       <div className="mt-6">
         <h3 className="text-lg font-semibold mb-3">Price Range</h3>
+        <div className="flex items-center space-x-3 mb-4">
+          <input
+            type="number"
+            value={priceRange[0]}
+            onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
+            className="p-2 bg-gray-700 text-sm text-white rounded-md w-20"
+            min="0"
+          />
+          <span>-</span>
+          <input
+            type="number"
+            value={priceRange[1]}
+            onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
+            className="p-2 bg-gray-700 text-sm text-white rounded-md w-20"
+            max="1000"
+          />
+        </div>
         <input
           type="range"
           min="0"
@@ -66,13 +94,25 @@ const Sidebar = () => {
 
       <div className="mt-6">
         <h3 className="text-lg font-semibold mb-3">Filters</h3>
-        <div className="flex items-center justify-between">
-          <span className="text-sm">Available</span>
-          <ChevronDown size={16} />
-        </div>
-        <div className="flex items-center justify-between mt-2">
-          <span className="text-sm">Discount</span>
-          <ChevronDown size={16} />
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm">Available</span>
+            <input
+              type="checkbox"
+              checked={filters.available}
+              onChange={() => handleFilterChange('available')}
+              className="rounded-md"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm">Discount</span>
+            <input
+              type="checkbox"
+              checked={filters.discount}
+              onChange={() => handleFilterChange('discount')}
+              className="rounded-md"
+            />
+          </div>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import Data from '../data/data';
 import Loader from '../Loader/Loader';
-import { Search, Filter, ChevronDown } from 'lucide-react';
+import { Search, Filter, ChevronDown, ShoppingCart } from 'lucide-react';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -118,6 +118,10 @@ const Home = () => {
           </div>
         ) : (
           <div>
+            <div className="flex justify-end list-center">
+            <ShoppingCart className=''/>
+            
+            </div>
             <h1 className="text-3xl font-semibold text-gray-800 mb-6">Product Listing</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
               {currentProducts.map((product, index) => (

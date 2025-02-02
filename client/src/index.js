@@ -16,7 +16,7 @@ root.render(
     <BrowserRouter>
     <Routes>
        <Route path='/Login' element={<Login/>}/>
-       <Route path='/' element={<TestingPage/>}/>
+       <Route path='/Somnath' element={<TestingPage/>}/>
       <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
       <Route path='/Admin' element={<Adminpage/>}/>
     </Routes>

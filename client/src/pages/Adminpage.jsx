@@ -2,7 +2,11 @@ import React from 'react'
 
 const Adminpage = () => {
   return (
-    <div>Adminpage</div>
+    <div>
+      <form action="">
+        
+      </form>
+    </div>
   )
 }
 
