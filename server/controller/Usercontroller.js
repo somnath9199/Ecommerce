@@ -4,7 +4,8 @@ const bcryt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const User = require('../model/User')
 const dotenv = require('dotenv').config();
-
+const {v2 : cloudinary} = require('cloudinary')
+const multer = require('multer')
 
 async function getHomepage(req, res) {
     res.status(200).json({ "message": "Home page" });
@@ -37,4 +38,28 @@ async function LoginFeature(req, res){
     }
 };
 
-module.exports = {LoginFeature ,getHomepage};
+async function UploadImage(req, res) {
+    try {
+        if (!req.files || !req.files.image || req.files.image.length === 0) {
+            return res.status(400).json({ message: "No image uploaded" });
+        }
+
+        const foldername = "ProductImage";
+
+        const uploadResult = await cloudinary.uploader.upload(req.files.image[0].path, {
+            folder: foldername
+        });
+
+        return res.status(201).json({ 
+            message: "Image uploaded successfully!", 
+            imageUrl: uploadResult.secure_url 
+        });
+
+    } catch (error) {
+        console.error("Upload error:", error);
+        return res.status(500).json({ message: "Internal Server Error", error });
+    }
+}
+
+
+module.exports = {LoginFeature ,getHomepage ,UploadImage};

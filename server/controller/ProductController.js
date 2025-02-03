@@ -64,4 +64,12 @@ async function deleteProduct(req, res) {
     }
 }
 
-module.exports = { Addproduct,deleteProduct,updateProduct };
+async function getAllproduct(req,res){
+    try {
+        const products = await Product.find();
+        return res.status(200).json({message:products})
+    } catch (error) {
+        return res.status(500).json({message:"Internal Server Error"})
+    }
+}
+module.exports = { Addproduct,deleteProduct,updateProduct,getAllproduct };

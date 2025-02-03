@@ -8,6 +8,8 @@ import Home from './pages/Home'
 import {AuthProvider} from './auth/Authcontext'
 import ProtectedRoute from './auth/ProtectedRoute';
 import Adminpage from './pages/Adminpage';
+import ProductList from './pages/Productlist';
+import Usercart from './pages/Usercart';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +21,7 @@ root.render(
        <Route path='/Somnath' element={<TestingPage/>}/>
       <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
       <Route path='/Admin' element={<Adminpage/>}/>
+      <Route path='/cart' element={<Usercart/>} />
     </Routes>
     </BrowserRouter>
     </AuthProvider>
