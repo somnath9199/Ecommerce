@@ -5,8 +5,10 @@ const App = () => {
     
     <>
     <Navbar/>
-    <hr></hr>
+  
     </>
+
+  
   )
 }
 

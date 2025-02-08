@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesco-like Navbar</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/36714d2e40.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Custom styles for dropdown */
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+
+        /* Increase height for top bar */
+        .top-bar {
+            padding-top: 20px; /* Increased padding-top */
+            padding-bottom: 20px; /* Increased padding-bottom */
+        }
+
+        /* Logo Animation */
+        .logo-container {
+            position: relative;
+            border: 5px solid transparent; /* Increased border width */
+            padding: 20px; /* Increased padding for more space */
+            border-radius: 10%;
+            animation: border-animation 2s infinite linear;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px; /* Fixed width for logo container */
+            height: 50px; /* Fixed height for logo container */
+        }
+
+        .logo-container img {
+            object-fit: cover;
+            width: 22px; /* Adjusted width */
+            height: 10px; /* Adjusted height */
+            border-radius: 50%; /* Ensure the image is also circular */
+        }
+
+        /* Animation for border moving continuously */
+        @keyframes border-animation {
+            0% {
+                border-color: rgb(255, 0, 0);
+            }
+            25% {
+                border-color: rgb(0, 255, 0);
+            }
+            50% {
+                border-color: rgb(0, 0, 255);
+            }
+            75% {
+                border-color: rgb(255, 255, 0);
+            }
+            100% {
+                border-color: rgb(255, 0, 255);
+            }
+        }
+
+        /* Stop the animation and add a lighting effect on hover */
+        .logo-container:hover {
+            animation: none; /* Stop the animation */
+            border-color: rgb(0, 255, 255); /* Set border to a single color when hovered */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* Lighting effect */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Top Bar -->
+    <div class="bg-gray-800 text-white text-sm top-bar">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div>
+                <i class="fas fa-phone-alt mr-2"></i> +94 123 4567 894
+            </div>
+            <div>
+                <a href="#" class="hover:text-gray-400">Login</a>
+                <span class="mx-2">|</span>
+                <a href="#" class="hover:text-gray-400">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bg-[#000000] shadow-md w-full">
+        <div class="container mx-auto flex justify-between items-center py-4 px-4">
+            <!-- Products Category -->
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-bars text-xl text-[#00FFFF]"></i> <!-- Increased icon size -->
+                <span class="font-semibold text-[#00FFFF] text-sm">Products</span> <!-- Decreased text size -->
+                <i class="fas fa-chevron-down ml-1 text-[#00FFFF]"></i>
+            </div>
+    
+            <!-- Menu Items -->
+            <ul class="flex space-x-0 text-[#00FFFF] font-semibold text-sm justify-start w-full">
+                <li class="relative group">
+                    <a href="#" class="hover:text-white flex items-center py-2 px-4 text-sm">Home <i class="fas fa-chevron-down ml-1"></i></a>
+                </li>
+                <li class="relative group">
+                    <a href="#" class="hover:text-white flex items-center py-2 px-4 text-sm">Mens Wear <i class="fas fa-chevron-down ml-1"></i></a>
+                </li>
+                <li class="relative group">
+                    <a href="#" class="hover:text-white flex items-center py-2 px-4 text-sm">Ladies Wear <i class="fas fa-chevron-down ml-1"></i></a>
+                </li>
+                <li class="relative group">
+                    <a href="#" class="hover:text-white flex items-center py-2 px-4 text-sm">Kids Wear <i class="fas fa-chevron-down ml-1"></i></a>
+                </li>
+                <li class="relative group">
+                    <a href="#" class="hover:text-white flex items-center py-2 px-4 text-sm">Contact Us <i class="fas fa-chevron-down ml-1"></i></a>
+                </li>
+                <li class="flex items-center">
+                    <span class="text-[#00FFFF] ml-3 text-xl">|</span> <!-- Added ml-3 for 3px margin -->
+                </li>
+                <li class="flex items-center">
+                    <span class="text-[#00FFFF] ml-3 text-xl">|</span> <!-- Added ml-3 for 3px margin -->
+                    <i class="fa-brands fa-ideal ml-4 text-xl"></i> <!-- Added the icon with 4px space -->
+                    <span class="ml-1 text-[#00FFFF] text-sm">Deal</span> <!-- Added text after icon -->
+            
+                    <!-- Additional icons with 1px space between them -->
+                    <i class="fa-solid fa-star ml-1 text-xl relative">
+                        <i class="fa-solid fa-check absolute top-0 right-0 text-xs text-green-500"></i> <!-- Checkmark on top right corner -->
+                    </i>
+            
+                    <i class="fa-solid fa-heart ml-1 text-xl relative">
+                        <i class="fa-solid fa-check absolute top-0 right-0 text-xs text-green-500"></i> <!-- Checkmark on top right corner -->
+                    </i>
+            
+                    <i class="fa-solid fa-lock ml-1 text-xl relative">
+                        <i class="fa-solid fa-check absolute top-0 right-0 text-xs text-green-500"></i> <!-- Checkmark on top right corner -->
+                    </i>
+                </li>
+            </ul>
+
+            <!-- Logo with animation -->
+            <div class="logo-container">
+                <img src="Log" alt="Logo" class="w-30 h-10"> <!-- Add your logo image here -->
+            </div>
+        </div>
+    </nav>
+    
+</body>
+</html>
